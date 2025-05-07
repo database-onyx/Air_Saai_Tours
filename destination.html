@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations | Air Saat Tours</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .destination-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .parallax-bg {
+            background-attachment: fixed;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div id="logo-session" class="flex items-center gap-3">
+                    <!-- Logo with proper sizing -->
+                    <img src="./images/airsaaitours-logo-color.png" alt="Logo" class="h-20 rounded-full object-cover">
+                    
+                    <!-- Brand name and tagline as SVG -->
+                    <div class="h-14">
+                        <img src="./images/airsaaitours-logo-text.png" alt="Air Saai Tours - Domestic & International Tour Operator" class="h-full">
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-red-600 transition duration-300 font-medium">Home</a>
+                    <a href="destination.html" class="text-red-600 font-semibold border-b-2 border-red-600 pb-1">Destinations</a>
+                    <a href="packages.html" class="text-gray-700 hover:text-red-600 transition duration-300 font-medium">Packages</a>
+                    <a href="testimonials.html" class="text-gray-700 hover:text-red-600 transition duration-300 font-medium">Testimonials</a>
+                    <a href="" class="text-gray-700 hover:text-red-600 transition duration-300 font-medium">Blog</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <!-- <a href="login.html" class="text-gray-700 border border-gray-300 rounded-full px-5 py-2 hover:bg-gray-100 transition duration-300">Login</a> -->
+                    <a href="contactus.html" class="bg-red-600 text-white rounded-full px-5 py-2 hover:bg-red-700 transition duration-300">Contact Us</a>
+                    <button class="md:hidden text-gray-700" id="menu-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4 mt-4 pb-4">
+                    <a href="index.html" class="text-gray-700 hover:text-red-600 transition duration-300">Home</a>
+                    <a href="destination.html" class="text-red-600 font-semibold">Destinations</a>
+                    <a href="packages.html" class="text-gray-700 hover:text-red-600 transition duration-300">Packages</a>
+                    <a href="" class="text-gray-700 hover:text-red-600 transition duration-300">Testimonials</a>
+                    <a href="" class="text-gray-700 hover:text-red-600 transition duration-300">Blog</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-96 md:h-[500px] overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('images/destination/1980-800-home-destination.jpg');">
+            <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        </div>
+        <div class="container mx-auto px-4 h-full flex items-center relative z-10">
+            <div class="text-white max-w-2xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight" id="hero-title">Explore Breathtaking Destinations</h1>
+                <p class="text-lg md:text-xl mb-8 opacity-90" id="hero-subtitle">Discover the world's most enchanting locations handpicked by our travel experts</p>
+                <div class="flex space-x-4">
+                    <a href="#destination" class="bg-red-600 hover:bg-red-700 text-white font-medium px-6 py-3 rounded-full transition duration-300 flex items-center shadow-lg">
+                        Explore Destinations
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="#featured" class="bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-filter backdrop-blur-sm text-white font-medium px-6 py-3 rounded-full transition duration-300 flex items-center border border-white border-opacity-30">
+                        Featured Tours
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="py-8 bg-white shadow-md relative -mt-16 rounded-lg mx-4 lg:mx-auto max-w-5xl z-20">
+        <div class="container mx-auto px-4">
+            <form action="#" method="POST" class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-4">
+                <div class="w-full md:w-1/4">
+                    <label for="destination" class="block text-sm font-medium text-gray-700 mb-1">Destination</label>
+                    <select id="destination" name="destination" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block p-2.5">
+                        <option selected>Choose a destination</option>
+                        <option value="goa">Goa</option>
+                        <option value="kerala">Kerala</option>
+                        <option value="rajasthan">Rajasthan</option>
+                        <option value="himachal">Himachal Pradesh</option>
+                        <option value="kashmir">Kashmir</option>
+                    </select>
+                </div>
+                <div class="w-full md:w-1/4">
+                    <label for="duration" class="block text-sm font-medium text-gray-700 mb-1">Duration</label>
+                    <select id="duration" name="duration" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block p-2.5">
+                        <option selected>Select duration</option>
+                        <option value="3">3 Days</option>
+                        <option value="4">4 Days</option>
+                        <option value="5">5 Days</option>
+                        <option value="6">6 Days</option>
+                        <option value="7">7+ Days</option>
+                    </select>
+                </div>
+                <div class="w-full md:w-1/4">
+                    <label for="travelers" class="block text-sm font-medium text-gray-700 mb-1">Travelers</label>
+                    <select id="travelers" name="travelers" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block p-2.5">
+                        <option selected>Number of travelers</option>
+                        <option value="1">1 Person</option>
+                        <option value="2">2 People</option>
+                        <option value="3-5">3-5 People</option>
+                        <option value="6-10">6-10 People</option>
+                        <option value="10+">10+ People</option>
+                    </select>
+                </div>
+                <div class="w-full md:w-1/4 pt-4 md:pt-0">
+                    <a href="#destination" ><button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                        </svg>
+                        Search Destinations
+                    </button></a>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section id="destination" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Popular Destinations</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Discover our handpicked collection of India's most sought-after destination, each offering unique experiences and unforgettable memories.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Destination Card 1 -->
+                <div class="destination-card bg-white rounded-xl overflow-hidden shadow-lg fade-in">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/destination/beach-destination.jpg" alt="Goa Beaches" class="w-full h-full object-cover transform hover:scale-110 transition duration-700">
+                        <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black to-transparent w-full p-4">
+                            <span class="text-white text-sm font-semibold bg-red-600 rounded-full px-3 py-1">Beach Paradise</span>
+                        </div>
+                    </div>
+                    <div class="p-6" id="goa-section">
+                        <h3 class="text-2xl font-bold mb-2">Goa</h3>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">4.5 (234 reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Experience the perfect blend of sun, sand, and vibrant culture with pristine beaches, water sports, and buzzing nightlife.</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-500 text-sm">Starting from</span>
+                                <p class="text-red-600 font-bold text-xl">₹12,999</p>
+                            </div>
+                            <a href="./packages.html#goa" class="text-red-600 hover:text-red-700 font-medium flex items-center">
+                                Explore More
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination Card 2 -->
+                <div class="destination-card bg-white rounded-xl overflow-hidden shadow-lg fade-in">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/destination/kerala-destination.jpg" alt="Kerala Backwaters" class="w-full h-full object-cover transform hover:scale-110 transition duration-700">
+                        <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black to-transparent w-full p-4">
+                            <span class="text-white text-sm font-semibold bg-red-600 rounded-full px-3 py-1">Nature Retreat</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Kerala</h3>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">4.9 (378 reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Discover the serene backwaters, lush tea plantations, and Ayurvedic treatments in God's Own Country.</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-500 text-sm">Starting from</span>
+                                <p class="text-red-600 font-bold text-xl">₹14,999</p>
+                            </div>
+                            <a href="./packages.html#kerala" class="text-red-600 hover:text-red-700 font-medium flex items-center">
+                                Explore More
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination Card 3 -->
+                <div class="destination-card bg-white rounded-xl overflow-hidden shadow-lg fade-in">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/destination/rajasthan-destination.jpg" alt="Rajasthan Palaces" class="w-full h-full object-cover transform hover:scale-110 transition duration-700">
+                        <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black to-transparent w-full p-4">
+                            <span class="text-white text-sm font-semibold bg-red-600 rounded-full px-3 py-1">Royal Heritage</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Rajasthan</h3>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">4.7 (412 reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Experience the royal heritage with magnificent forts, opulent palaces, and vibrant culture of the desert state.</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-500 text-sm">Starting from</span>
+                                <p class="text-red-600 font-bold text-xl">₹18,499</p>
+                            </div>
+                            <a href="./packages.html#gujarat" class="text-red-600 hover:text-red-700 font-medium flex items-center">
+                                Explore More
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination Card 4 -->
+                <div class="destination-card bg-white rounded-xl overflow-hidden shadow-lg fade-in">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/destination/himachal-pradesh-destination.jpg" alt="Himachal Mountains" class="w-full h-full object-cover transform hover:scale-110 transition duration-700">
+                        <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black to-transparent w-full p-4">
+                            <span class="text-white text-sm font-semibold bg-red-600 rounded-full px-3 py-1">Mountain Getaway</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Himachal Pradesh</h3>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">4.8 (295 reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Escape to the mountains with scenic valleys, adventure activities, and charming hill stations.</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-500 text-sm">Starting from</span>
+                                <p class="text-red-600 font-bold text-xl">₹13,999</p>
+                            </div>
+                            <a href="./packages.html#himachalpradesh" class="text-red-600 hover:text-red-700 font-medium flex items-center">
+                                Explore More
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination Card 5 -->
+                <div class="destination-card bg-white rounded-xl overflow-hidden shadow-lg fade-in">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/destination/kashmir-destination.jpg" alt="Kashmir Valley" class="w-full h-full object-cover transform hover:scale-110 transition duration-700">
+                        <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black to-transparent w-full p-4">
+                            <span class="text-white text-sm font-semibold bg-red-600 rounded-full px-3 py-1">Paradise on Earth</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Kashmir</h3>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">4.7 (342 reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Experience the breathtaking beauty of snow-capped mountains, pristine lakes, and the famous Shikara rides.</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-500 text-sm">Starting from</span>
+                                <p class="text-red-600 font-bold text-xl">₹21,999</p>
+                            </div>
+                            <a href="./packages.html" class="text-red-600 hover:text-red-700 font-medium flex items-center">
+                                Explore More
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination Card 6 -->
+                <div class="destination-card bg-white rounded-xl overflow-hidden shadow-lg fade-in">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/destination/varanaasi-destination.jpg" alt="Spiritual Varanasi" class="w-full h-full object-cover transform hover:scale-110 transition duration-700">
+                        <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black to-transparent w-full p-4">
+                            <span class="text-white text-sm font-semibold bg-red-600 rounded-full px-3 py-1">Spiritual Journey</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Spiritual India</h3>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">4.9 (218 reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Discover the spiritual side of India with visits to ancient temples, sacred rivers, and meditation retreats.</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-500 text-sm">Starting from</span>
+                                <p class="text-red-600 font-bold text-xl">₹15,999</p>
+                            </div>
+                            <a href="./packages.html#kasi" class="text-red-600 hover:text-red-700 font-medium flex items-center">
+                                Explore More
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- View More Button -->
+            <div class="text-center mt-12 fade-in">
+                <a href="./packages.html" class="inline-block bg-white hover:bg-gray-50 text-red-600 font-medium border border-red-600 rounded-full px-8 py-3 transition duration-300">
+                    View All Destinations
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Experience Section -->
+    <section id="featured" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Experience</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Immerse yourself in the beauty and culture of Rajasthan with our specially curated royal experience package</p>
+            </div>
+            
+</div>
+</section>
+<div class="rounded-xl overflow-hidden shadow-xl">
+    <img src="images/destination/rajasthan-bigframe.jpg" alt="Rajasthan Royal Experience" class="w-full h-auto">
+</div>
+</div>
+<div class="fade-in">
+<div class="bg-white p-8 rounded-xl shadow-lg">
+    <span class="text-red-600 font-medium">EXCLUSIVE PACKAGE</span>
+    <h3 class="text-3xl font-bold mt-2 mb-4">Royal Rajasthan Experience</h3>
+    <p class="text-gray-600 mb-6">Experience the grandeur of Rajasthan with this exclusive 8-day royal tour. Stay in heritage palaces converted into luxury hotels, enjoy private cultural performances, and explore hidden gems with expert local guides.</p>
+    
+    <div class="grid grid-cols-2 gap-4 mb-6">
+        <div class="flex items-center">
+            <div class="bg-red-100 p-2 rounded-full mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <span class="text-gray-700">8 Days / 7 Nights</span>
+        </div>
+        <div class="flex items-center">
+            <div class="bg-red-100 p-2 rounded-full mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+            </div>
+            <span class="text-gray-700">5 Destinations</span>
+        </div>
+        <div class="flex items-center">
+            <div class="bg-red-100 p-2 rounded-full mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            <span class="text-gray-700">Luxury Accommodations</span>
+        </div>
+        <div class="flex items-center">
+            <div class="bg-red-100 p-2 rounded-full mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+            </div>
+            <span class="text-gray-700">Private Guide</span>
+        </div>
+    </div>
+    
+    <div class="flex items-center mb-6">
+        <span class="text-sm line-through text-gray-500 mr-2">₹45,999</span>
+        <span class="text-3xl font-bold text-red-600">₹38,999</span>
+        <span class="text-gray-600 ml-2">per person</span>
+    </div>
+    
+    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+        <a href="./contactus.html" class="bg-red-600 hover:bg-red-700 text-white font-medium px-6 py-3 rounded-full transition duration-300 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+            </svg>
+            Book Now
+        </a>
+        <a href="#" class="border border-red-600 text-red-600 hover:bg-red-50 font-medium px-6 py-3 rounded-full transition duration-300 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1v-3a1 1 0 00-1-1z" clip-rule="evenodd" />
+            </svg>
+            View Details
+        </a>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Destination Categories -->
+<section class="py-16">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12 fade-in">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Explore by Category</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Find your perfect travel experience based on your interests and preferences</p>
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Category 1 -->
+<div class="relative rounded-xl overflow-hidden group fade-in">
+<img src="images/destination/beach-destination.jpg" alt="Beach Destinations" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+<div class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-50 transition duration-300 flex flex-col justify-end p-6">
+    <h3 class="text-white text-xl font-bold mb-2">Beach Destinations</h3>
+    <p class="text-white text-sm opacity-90 mb-4">Relax on pristine shorelines and enjoy water activities</p>
+    <a href="./contactus.html" class="text-white flex items-center text-sm font-medium">
+        Explore Beach Destinations
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+    </a>
+</div>
+</div>
+
+<!-- Category 2 -->
+<div class="relative rounded-xl overflow-hidden group fade-in">
+<img src="images/destination/mountain-destination.jpg" alt="Mountain Retreats" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+<div class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-50 transition duration-300 flex flex-col justify-end p-6">
+    <h3 class="text-white text-xl font-bold mb-2">Mountain Retreats</h3>
+    <p class="text-white text-sm opacity-90 mb-4">Experience the majesty of India's magnificent mountains</p>
+    <a href="./contactus.html" class="text-white flex items-center text-sm font-medium">
+        Explore Mountain Retreats
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+    </a>
+</div>
+</div>
+
+<!-- Category 3 -->
+<div class="relative rounded-xl overflow-hidden group fade-in">
+<img src="images/destination/heritage-destination.jpg" alt="Heritage Sites" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+<div class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-50 transition duration-300 flex flex-col justify-end p-6">
+    <h3 class="text-white text-xl font-bold mb-2">Heritage Sites</h3>
+    <p class="text-white text-sm opacity-90 mb-4">Discover India's rich history and architectural marvels</p>
+    <a href="./contactus.html" class="text-white flex items-center text-sm font-medium">
+        Explore Heritage Sites
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+    </a>
+</div>
+</div>
+
+<!-- Category 4 -->
+<div class="relative rounded-xl overflow-hidden group fade-in">
+<img src="images/destination/wildlife-sanctury-destination.jpg" alt="Wildlife Sanctuaries" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+<div class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-50 transition duration-300 flex flex-col justify-end p-6">
+    <h3 class="text-white text-xl font-bold mb-2">Wildlife Sanctuaries</h3>
+    <p class="text-white text-sm opacity-90 mb-4">Encounter India's diverse flora and fauna in their natural habitat</p>
+    <a href="./contactus.html" class="text-white flex items-center text-sm font-medium">
+        Explore Wildlife Sanctuaries
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+    </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12 fade-in">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Travelers Say</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Read authentic reviews from our happy customers who have experienced our premium tour packages</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="bg-white p-6 rounded-xl shadow-lg fade-in">
+<div class="flex text-yellow-400 mb-4">
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+</div>
+<p class="text-gray-600 mb-6">"Our Kerala backwaters experience was absolutely magical! The houseboat stay was luxurious, and the attention to detail by Air Saat Tours was impeccable. Will definitely book with them again."</p>
+<div class="flex items-center">
+    <img src="images/img-3.jpg" alt="Customer" class="w-12 h-12 rounded-full object-cover mr-4">
+    <div>
+        <h4 class="font-bold">Priya Sharma</h4>
+        <p class="text-sm text-gray-500">Kerala Backwaters Tour</p>
+    </div>
+</div>
+</div>
+
+<!-- Testimonial 2 -->
+<div class="bg-white p-6 rounded-xl shadow-lg fade-in">
+<div class="flex text-yellow-400 mb-4">
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+</div>
+<p class="text-gray-600 mb-6">"The Royal Rajasthan package exceeded all our expectations. The heritage hotels were stunning, and our guide was incredibly knowledgeable. Every detail was taken care of, making it truly a luxury experience."</p>
+<div class="flex items-center">
+    <img src="images/img-2.jpg" alt="Customer" class="w-12 h-12 rounded-full object-cover mr-4">
+    <div>
+        <h4 class="font-bold">Raj & Meena Patel</h4>
+        <p class="text-sm text-gray-500">Royal Rajasthan Tour</p>
+    </div>
+</div>
+</div>
+
+<!-- Testimonial 3 -->
+<div class="bg-white p-6 rounded-xl shadow-lg fade-in">
+<div class="flex text-yellow-400 mb-4">
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star-half-alt"></i>
+</div>
+<p class="text-gray-600 mb-6">"Our family vacation to Goa was perfect thanks to Air Saat Tours. The beachfront resort was beautiful, and the team arranged amazing activities for our children. The 24/7 support was a great comfort during our travels."</p>
+<div class="flex items-center">
+    <img src="images/img-1.jpg" alt="Customer" class="w-12 h-12 rounded-full object-cover mr-4">
+    <div>
+        <h4 class="font-bold">Vikram Singh</h4>
+        <p class="text-sm text-gray-500">Goa Family Holiday</p>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="text-center mt-10 fade-in">
+<a href="" class="inline-flex items-center text-red-600 hover:text-red-700 font-medium">
+View All Testimonials
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+</svg>
+</a>
+</div>
+</div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="py-12 bg-red-600 text-white">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row items-center justify-between">
+<div class="mb-6 md:mb-0 md:w-1/2">
+<h3 class="text-2xl font-bold mb-2">Subscribe to Our Newsletter</h3>
+<p class="opacity-90 max-w-md">Stay updated with our latest travel offers, destination insights, and exclusive deals</p>
+</div>
+<div class="w-full md:w-1/2">
+<form class="flex flex-col sm:flex-row gap-3">
+    <input type="email" placeholder="Enter your email address" class="flex-grow px-4 py-3 rounded-full focus:outline-none text-gray-800">
+    <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white font-medium px-6 py-3 rounded-full transition duration-300 whitespace-nowrap">
+        Subscribe Now
+    </button>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div>
+    <div class="text-3xl font-bold ">Air Saai Tours</div>
+    <div class="bg-primary text-white px-6 py-2 rounded-md text-sm uppercase tracking-wider mt-2" style="
+    width: 66%;
+    font-size: 8.5px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0px 0 0 8px;
+    background-color: red;
+    ">
+        Domestic & International Tour Operator
+    </div>
+<p class="text-gray-400 mb-4">Your trusted partner in creating unforgettable travel experiences across India and worldwide.</p>
+<div class="flex space-x-4">
+    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+        <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://www.instagram.com/airsaaitours/" class="text-gray-400 hover:text-white transition duration-300">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.youtube.com/@airsaaitours112" class="text-gray-400 hover:text-white transition duration-300">
+        <i class="fab fa-youtube"></i>
+    </a>
+</div>
+</div>
+
+<div>
+    <h3 class="text-xl font-semibold mb-6">Quick Links</h3>
+    <ul class="space-y-3">
+        <li><a href="" class="text-gray-400 hover:text-white transition">About Us</a></li>
+        <li><a href="./packages.html" class="text-gray-400 hover:text-white transition">Our Services</a></li>
+        <li><a href="./packages.html" class="text-gray-400 hover:text-white transition">Tour Packages</a></li>
+        <li><a href="./destination.html" class="text-gray-400 hover:text-white transition">Destinations</a></li>
+        <li><a href="#" class="text-gray-400 hover:text-white transition">Travel Blog</a></li>
+    </ul>
+</div>
+
+<div>
+    <h3 class="text-xl font-semibold mb-6">Popular Destinations</h3>
+    <ul class="space-y-3">
+        <li><a href="./packages.html" class="text-gray-400 hover:text-white transition">Kerala Packages</a></li>
+        <li><a href="./packages.html" class="text-gray-400 hover:text-white transition">Rajasthan Heritage</a></li>
+        <li><a href="./packages.html" class="text-gray-400 hover:text-white transition">Goa Beach Holidays</a></li>
+        <li><a href="./packages.html" class="text-gray-400 hover:text-white transition">Ladakh Adventure</a></li>
+        <li><a href="./packages.html" class="text-gray-400 hover:text-white transition">Spiritual Journey</a></li>
+    </ul>
+</div>
+
+<div>
+<h4 class="text-lg font-bold mb-4">Contact Information</h4>
+<ul class="space-y-3">
+    <li class="flex items-start">
+        <i class="fas fa-map-marker-alt mt-1 mr-3 text-red-500"></i>
+        <span class="text-gray-400">Air Saai Tours, 3, Perumal Koil St, near Sasi Eye Care, Swarnapuri, Salem, Tamil Nadu 636004</span>
+    </li>
+    <li class="flex items-center">
+        <i class="fas fa-phone-alt mr-3 text-red-500"></i>
+        <a href="tel:+917373005591" class=" hover:text-primary transition duration-200 animate-blink">
+            +91 73730 05591
+        </a>
+    </li>
+    <li class="flex items-center">
+        <i class="fas fa-envelope mr-3 text-red-500"></i>
+        <span class="text-gray-400">info@airsaattours.com</span>
+    </li>
+</ul>
+</div>
+</div>
+
+<hr class="border-gray-800 my-8">
+
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-500 text-sm">© 2025 Air Saat Tours. All rights reserved.</p>
+<div class="flex space-x-6 mt-4 md:mt-0">
+<a href="privacy.html" class="text-gray-500 hover:text-white text-sm transition duration-300">Privacy Policy</a>
+<a href="terms.html" class="text-gray-500 hover:text-white text-sm transition duration-300">Terms & Conditions</a>
+<a href="cancellation.html" class="text-gray-500 hover:text-white text-sm transition duration-300">Cancellation Policy</a>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="back-to-top" class="fixed bottom-6 right-6 bg-red-600 text-white rounded-full p-3 shadow-lg hidden hover:bg-red-700 transition duration-300">
+<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+</svg>
+</button>
+
+<script>
+// Mobile Menu Toggle
+document.getElementById('menu-toggle').addEventListener('click', function() {
+document.getElementById('mobile-menu').classList.toggle('hidden');
+});
+
+// Back to Top Button
+window.addEventListener('scroll', function() {
+const backToTopButton = document.getElementById('back-to-top');
+if (window.pageYOffset > 300) {
+backToTopButton.classList.remove('hidden');
+} else {
+backToTopButton.classList.add('hidden');
+}
+});
+
+document.getElementById('back-to-top').addEventListener('click', function() {
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+});
+
+// Animation on Scroll
+const fadeElements = document.querySelectorAll('.fade-in');
+
+const fadeInObserver = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('active');
+fadeInObserver.unobserve(entry.target);
+}
+});
+}, {
+threshold: 0.2
+});
+
+fadeElements.forEach(element => {
+fadeInObserver.observe(element);
+});
+
+// Hero Animations
+window.addEventListener('load', function() {
+const heroTitle = document.getElementById('hero-title');
+const heroSubtitle = document.getElementById('hero-subtitle');
+
+if (heroTitle && heroSubtitle) {
+setTimeout(() => {
+heroTitle.style.opacity = '1';
+heroTitle.style.transform = 'translateY(0)';
+}, 300);
+
+setTimeout(() => {
+heroSubtitle.style.opacity = '1';
+heroSubtitle.style.transform = 'translateY(0)';
+}, 500);
+}
+});
+</script>
+<script>
+    // Observe elements with animation classes and trigger them when they enter viewport
+    document.addEventListener('DOMContentLoaded', function() {
+        const animatedElements = document.querySelectorAll('.fade-in, .slide-in, .scale-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.visibility = 'visible';
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'none';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        animatedElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.visibility = 'hidden';
+            observer.observe(el);
+        });
+        
+        // Mobile menu toggle
+        const menuButton = document.querySelector('.md\\:hidden');
+        if (menuButton) {
+            menuButton.addEventListener('click', function() {
+                const mobileMenu = document.createElement('div');
+                mobileMenu.className = 'fixed inset-0 bg-white z-50 p-4';
+                mobileMenu.innerHTML = `
+                    <div class="flex justify-between items-center mb-8">
+                                    <div id="logo-session" class="flex items-center gap-3">
+                <!-- Logo with proper sizing -->
+                <img src="./images/airsaaitours-logo-color.png" alt="Logo" class="h-20 rounded-full object-cover">
+                
+                <!-- Brand name and tagline as SVG -->
+                <div class="h-14">
+                    <img src="./images/airsaaitours-logo-text.png" alt="Air Saai Tours - Domestic & International Tour Operator" class="h-full">
+                </div>
+            </div>
+                    </div>
+                    <nav class="flex flex-col space-y-4">
+                        <a href="./index.html" class="text-gray-800 hover:text-primary font-medium py-2 border-b border-gray-100">Home</a>
+                        <a href="./destination.html" class="text-gray-800 hover:text-primary font-medium py-2 border-b border-gray-100">Destinations</a>
+                        <a href="./packages.html" class="text-gray-800 hover:text-primary font-medium py-2 border-b border-gray-100">Packages</a>
+                        <a href="" class="text-gray-800 hover:text-primary font-medium py-2 border-b border-gray-100">Testimonials</a>
+                        <a href="" class="text-gray-800 hover:text-primary font-medium py-2 border-b border-gray-100">Blog</a>
+                        <div class="pt-4 flex flex-col space-y-3">
+                            <a href="tel:+917373005591" class="bg-primary text-white rounded-full px-5 py-2 text-center">Contact Us</a>
+                        </div>
+                    </nav>
+                `;
+                document.body.appendChild(mobileMenu);                
+                const closeButton = mobileMenu.querySelector('button');
+                closeButton.addEventListener('click', function() {
+                    document.body.removeChild(mobileMenu);
+                });
+            });
+        }
+    });
+</script>
+</body>
+</html>
