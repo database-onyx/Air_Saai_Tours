@@ -1,0 +1,2035 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Saai Tours - Discover India's Magical Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ff0000',
+                        secondary: '#002242',
+                        accent: '#f8b400',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .hero-slider {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-in {
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .scale-in {
+            animation: scaleIn 0.5s ease forwards;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .destination-card {
+            transition: transform 0.3s ease;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .owl-nav button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7) !important;
+            width: 40px;
+            height: 40px;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .owl-prev {
+            left: -20px;
+        }
+
+        .owl-next {
+            right: -20px;
+        }
+
+        .destination-card {
+            transition: all 0.3s ease;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Hero Carousel Styles */
+        .hero-carousel .owl-dots {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+        }
+
+        .hero-carousel .owl-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero-carousel .owl-dot.active {
+            /* background: white; */
+            width: 40px;
+            border-radius: 10px;
+        }
+
+        .hero-carousel .owl-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .hero-slide {
+            position: relative;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animate-bounce {
+            animation: bounce 2s infinite;
+        }
+    </style>
+    <style>
+        .popup-contact-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .popup-contact-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .popup-contact-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #888;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        .popup-contact-close:hover {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .popup-contact-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .popup-contact-description {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .popup-form-group {
+            margin-bottom: 20px;
+        }
+
+        .popup-form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .popup-form-input,
+        .popup-form-select,
+        .popup-form-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .popup-form-input:focus,
+        .popup-form-select:focus,
+        .popup-form-textarea:focus {
+            outline: none;
+            border-color: #ff5252;
+            box-shadow: 0 0 0 3px rgba(255, 82, 82, 0.15);
+        }
+
+        .popup-form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .popup-form-col {
+            flex: 1;
+        }
+
+        .popup-form-button {
+            background-color: #ff5252;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .popup-form-button:hover {
+            background-color: #e03e3e;
+        }
+
+        .popup-form-button:disabled {
+            background-color: #ffb8b8;
+            cursor: not-allowed;
+        }
+
+        .popup-loading-spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #ffffff;
+            animation: popup-spinner 0.8s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes popup-spinner {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .popup-message {
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            display: none;
+        }
+
+        .popup-success-message {
+            background-color: #e0f7e6;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+
+        .popup-error-message {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+        }
+    </style>
+
+</head>
+
+<body class="bg-gray-50">
+    <!-- Top Bar -->
+    <div class="bg-secondary text-white px-4 py-1 flex justify-between items-center text-xs">
+        <div>
+            <i class="fas fa-phone-alt mr-1"></i> +91 73730 05591
+            <span class="mx-2">|</span>
+            <i class="fas fa-envelope mr-1"></i> info@airsaaitours.com
+        </div>
+        <div>
+            <a href="#" class="mx-1"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="mx-1"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/airsaaitours/" class="mx-1"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@airsaaitours112" class="mx-1"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center py-3 px-4">
+            <div id="logo-session" class="flex items-center gap-3">
+                <!-- Logo with proper sizing -->
+                <img src="./images/airsaaitours-logo-color.png" alt="Logo" class="h-20 rounded-full object-cover">
+
+                <!-- Brand name and tagline as SVG -->
+                <div class="h-14">
+                    <img src="./images/airsaaitours-logo-text.png"
+                        alt="Air Saai Tours - Domestic & International Tour Operator" class="h-full">
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#" class="text-gray-800 hover:text-primary font-medium transition">Home</a>
+                <a href="./destination.html"
+                    class="text-gray-800 hover:text-primary font-medium transition">Destinations</a>
+                <a href="./packages.html" class="text-gray-800 hover:text-primary font-medium transition">Packages</a>
+                <a href="./testimonials.html"
+                    class="text-gray-800 hover:text-primary font-medium transition">Testimonials</a>
+                <a href="#" class="text-gray-800 hover:text-primary font-medium transition">Blog</a>
+                <!-- <a href="#" class="border border-gray-300 rounded-full px-5 py-1.5 text-gray-700 hover:bg-gray-100 transition">Login</a> -->
+                <a href="./contactus.html"
+                    class="bg-primary text-white rounded-full px-5 py-1.5 hover:bg-red-700 transition">Contact Us</a>
+            </nav>
+
+            <button class="md:hidden text-gray-800">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section with Carousel -->
+    <section class="hero-slider relative h-[600px] overflow-hidden">
+        <div class="owl-carousel hero-carousel owl-theme h-full">
+            <!-- Slide 1 -->
+            <div class="hero-slide relative h-[600px]">
+                <img src="images/homepage/banner/adventure.jpg" alt="Group Tours" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                <div class="absolute inset-0 flex items-center justify-center text-center z-10">
+                    <div class="container mx-auto px-4">
+                        <div class="text-white fade-in">
+                            <h1 class="text-5xl md:text-7xl font-bold mb-4">Group Tours</h1>
+                            <div class="flex items-center justify-center mb-6">
+                                <div class="h-px w-16 bg-white mr-3"></div>
+                                <p class="text-xl md:text-2xl font-light">Explore More</p>
+                                <div class="h-px w-16 bg-white ml-3"></div>
+                            </div>
+                            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 leading-relaxed">
+                                Make memories for an adventure of a lifetime. Travel with us to breathtaking
+                                destinations and create unforgettable moments together while enjoying seamless travel
+                                experiences.
+                            </p>
+                            <a href="./packages.html"
+                                class="inline-block bg-white text-gray-800 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
+                                Explore Packages <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="hero-slide relative h-[600px]">
+                <img src="images/homepage/banner/beach.jpg" alt="Adventure Travel" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                <div class="absolute inset-0 flex items-center justify-center text-center z-10">
+                    <div class="container mx-auto px-4">
+                        <div class="text-white fade-in">
+                            <h1 class="text-5xl md:text-7xl font-bold mb-4">Adventure Awaits</h1>
+                            <div class="flex items-center justify-center mb-6">
+                                <div class="h-px w-16 bg-white mr-3"></div>
+                                <p class="text-xl md:text-2xl font-light">Discover More</p>
+                                <div class="h-px w-16 bg-white ml-3"></div>
+                            </div>
+                            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 leading-relaxed">
+                                Experience the thrill of exploring new destinations with our expertly curated adventure
+                                packages. From mountains to beaches, we've got you covered.
+                            </p>
+                            <a href="./packages.html"
+                                class="inline-block bg-white text-gray-800 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
+                                View Adventures <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="hero-slide relative h-[600px]">
+                <img src="images/homepage/banner/honeymoon.jpg" alt="Cultural Tours" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                <div class="absolute inset-0 flex items-center justify-center text-center z-10">
+                    <div class="container mx-auto px-4">
+                        <div class="text-white fade-in">
+                            <h1 class="text-5xl md:text-7xl font-bold mb-4">Cultural Journeys</h1>
+                            <div class="flex items-center justify-center mb-6">
+                                <div class="h-px w-16 bg-white mr-3"></div>
+                                <p class="text-xl md:text-2xl font-light">Experience More</p>
+                                <div class="h-px w-16 bg-white ml-3"></div>
+                            </div>
+                            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 leading-relaxed">
+                                Immerse yourself in rich cultures and traditions. Discover heritage sites, local
+                                cuisines, and authentic experiences that will stay with you forever.
+                            </p>
+                            <a href="./packages.html"
+                                class="inline-block bg-white text-gray-800 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
+                                Start Journey <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="hero-slide relative h-[600px]">
+                <img src="images/homepage/banner/mountains.jpg" alt="Beach Holidays" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                <div class="absolute inset-0 flex items-center justify-center text-center z-10">
+                    <div class="container mx-auto px-4">
+                        <div class="text-white fade-in">
+                            <h1 class="text-5xl md:text-7xl font-bold mb-4">Beach Escapes</h1>
+                            <div class="flex items-center justify-center mb-6">
+                                <div class="h-px w-16 bg-white mr-3"></div>
+                                <p class="text-xl md:text-2xl font-light">Relax More</p>
+                                <div class="h-px w-16 bg-white ml-3"></div>
+                            </div>
+                            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 leading-relaxed">
+                                Unwind on pristine beaches and crystal-clear waters. Let the waves wash away your
+                                worries as you soak in the sun and create beautiful memories.
+                            </p>
+                            <a href="./packages.html"
+                                class="inline-block bg-white text-gray-800 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
+                                Book Now <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-8 right-8 z-20 text-white animate-bounce">
+            <div class="flex flex-col items-center">
+                <i class="fas fa-chevron-down text-2xl mb-1"></i>
+                <span class="text-sm tracking-widest" style="writing-mode: vertical-rl;">SCROLL</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Tours Section -->
+    <section class="py-16 bg-gradient-to-br from-secondary via-secondary to-blue-900 relative overflow-hidden">
+        <!-- Abstract Background Shapes -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl -ml-48 -mb-48"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div class="text-left">
+                    <span class="text-accent font-bold tracking-widest uppercase text-sm mb-2 block">Special Selection</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Upcoming Trips</h2>
+                    <div class="h-1.5 w-32 bg-primary rounded-full"></div>
+                </div>
+                <div class="hidden md:block">
+                    <p class="text-gray-300 max-w-md text-right">
+                        Hand-picked destinations for our next seasonal departures. Limited slots available for these exclusive group tours.
+                    </p>
+                </div>
+            </div>
+
+            <div class="owl-carousel upcoming-carousel owl-theme">
+                <!-- 1. Shirdi, Nasik - Mumbai -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-2xl group transition-all duration-500 hover:-translate-y-2 border border-white/10">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/upcoming/nasik-1.png" alt="Mumbai Gateway" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 flex flex-col gap-2">
+                            <span class="bg-primary text-white font-bold py-1 px-4 rounded-xl shadow-lg text-sm">APR 03</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-secondary text-xs font-bold flex items-center shadow-lg">
+                            <i class="fas fa-plane mr-1.5 text-primary"></i> 3 DAYS FLIGHT
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition-colors">Shirdi, Nasik - Mumbai</h3>
+                        <p class="text-gray-500 text-sm mb-6 line-clamp-2">Shirdi Sai Baba, 8th Jyotirlinga, Trimbakeshwar, Siddhivinayak, Mahalakshmi Temple & Mumbai Gateway.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                            <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Starts From</span>
+                            <span class="text-2xl font-black text-secondary">₹18,500</span>
+                        </div>
+                        <a href="packages.html#upcoming-shirdi-mumbai" class="mt-6 block w-full bg-secondary text-white text-center py-4 rounded-2xl font-bold hover:bg-primary transition-all shadow-xl shadow-secondary/20">
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. Mangalore Karnataka -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-2xl group transition-all duration-500 hover:-translate-y-2 border border-white/10">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/upcoming/karnataka.png" alt="Murudeshwar Temple" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 flex flex-col gap-2">
+                            <span class="bg-primary text-white font-bold py-1 px-4 rounded-xl shadow-lg text-sm">MAR 11</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-secondary text-xs font-bold flex items-center shadow-lg">
+                            <i class="fas fa-train mr-1.5 text-primary"></i> 4 DAYS TRAIN
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition-colors">Mangalore Karnataka Yatra</h3>
+                        <p class="text-gray-500 text-sm mb-6 line-clamp-2">Kukke Subramanya, Sringeri Saradambal, Dharmasthala, Thai Mookambika, Murudeshwar & Udupi Krishna.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                            <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Starts From</span>
+                            <span class="text-2xl font-black text-secondary">₹14,200</span>
+                        </div>
+                        <a href="packages.html#upcoming-mangalore-yatra" class="mt-6 block w-full bg-secondary text-white text-center py-4 rounded-2xl font-bold hover:bg-primary transition-all shadow-xl shadow-secondary/20">
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. Shirdi - Mantralayam -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-2xl group transition-all duration-500 hover:-translate-y-2 border border-white/10">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/upcoming/shirdi_and_mantralayam.jpg" alt="Indian Temple" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 flex flex-col gap-2">
+                            <span class="bg-primary text-white font-bold py-1 px-4 rounded-xl shadow-lg text-sm">MAR 18</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-secondary text-xs font-bold flex items-center shadow-lg">
+                            <i class="fas fa-train mr-1.5 text-primary"></i> 5 DAYS TRAIN
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition-colors">Shirdi & Mantralayam</h3>
+                        <p class="text-gray-500 text-sm mb-6 line-clamp-2">Pandharpur, Mantralayam Raghavendra Darshan, Panduranga Nathar, Shirdi Baba & Sani Bhagavan.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                            <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Starts From</span>
+                            <span class="text-2xl font-black text-secondary">₹16,900</span>
+                        </div>
+                        <a href="packages.html#upcoming-shirdi-mantralayam" class="mt-6 block w-full bg-secondary text-white text-center py-4 rounded-2xl font-bold hover:bg-primary transition-all shadow-xl shadow-secondary/20">
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4. Kashi Ayodhya -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-2xl group transition-all duration-500 hover:-translate-y-2 border border-white/10">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/upcoming/kashi ayodhya.png" alt="Varanasi Ghats" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 flex flex-col gap-2">
+                            <span class="bg-primary text-white font-bold py-1 px-4 rounded-xl shadow-lg text-sm">MAR 19</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-secondary text-xs font-bold flex items-center shadow-lg">
+                            <i class="fas fa-plane mr-1.5 text-primary"></i> 3 DAYS FLIGHT
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition-colors">Kashi Ayodhya</h3>
+                        <p class="text-gray-500 text-sm mb-6 line-clamp-2">Kashi Vishwanathar, Annapoorani Temple, 64 Ghats, Ram Janmabhoomi & Saryu River Aarti.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                            <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Starts From</span>
+                            <span class="text-2xl font-black text-secondary">₹21,500</span>
+                        </div>
+                        <a href="packages.html#upcoming-kashi-ayodhya" class="mt-6 block w-full bg-secondary text-white text-center py-4 rounded-2xl font-bold hover:bg-primary transition-all shadow-xl shadow-secondary/20">
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 5. Kashmir -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-2xl group transition-all duration-500 hover:-translate-y-2 border border-white/10">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/upcoming/kashmir paradise.png" alt="Kashmir Dal Lake" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 flex flex-col gap-2">
+                            <span class="bg-primary text-white font-bold py-1 px-4 rounded-xl shadow-lg text-sm">APR 03</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-secondary text-xs font-bold flex items-center shadow-lg">
+                            <i class="fas fa-plane mr-1.5 text-primary"></i> 6 DAYS FLIGHT
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition-colors">Kashmir Paradise</h3>
+                        <p class="text-gray-500 text-sm mb-6 line-clamp-2">Gulmarg, Pahalgam, Sonmarg, Dal Lake Shikara Ride, Gondola Ride & Mughal Gardens.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                            <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Starts From</span>
+                            <span class="text-2xl font-black text-secondary">₹34,500</span>
+                        </div>
+                        <a href="packages.html#upcoming-kashmir" class="mt-6 block w-full bg-secondary text-white text-center py-4 rounded-2xl font-bold hover:bg-primary transition-all shadow-xl shadow-secondary/20">
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 6. Andaman -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-2xl group transition-all duration-500 hover:-translate-y-2 border border-white/10">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/upcoming/andaman island-1.png" alt="Andaman Beach" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 flex flex-col gap-2">
+                            <span class="bg-primary text-white font-bold py-1 px-4 rounded-xl shadow-lg text-sm">APR 02</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-secondary text-xs font-bold flex items-center shadow-lg">
+                            <i class="fas fa-plane mr-1.5 text-primary"></i> 5 DAYS FLIGHT
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition-colors">Andaman Islands</h3>
+                        <p class="text-gray-500 text-sm mb-6 line-clamp-2">Cellular Jail, Ross Island, Havelock Island, Radhanagar Beach & Kalapathar Beach City Tour.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                            <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Starts From</span>
+                            <span class="text-2xl font-black text-secondary">₹29,900</span>
+                        </div>
+                        <a href="packages.html#upcoming-andaman" class="mt-6 block w-full bg-secondary text-white text-center py-4 rounded-2xl font-bold hover:bg-primary transition-all shadow-xl shadow-secondary/20">
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 7. Thailand -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-2xl group transition-all duration-500 hover:-translate-y-2 border border-white/10">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/upcoming/Thailand & Bangkok.png" alt="Thailand Temple" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 flex flex-col gap-2">
+                            <span class="bg-primary text-white font-bold py-1 px-4 rounded-xl shadow-lg text-sm">MAR 15</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-secondary text-xs font-bold flex items-center shadow-lg">
+                            <i class="fas fa-plane mr-1.5 text-primary"></i> 5 DAYS FLIGHT
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition-colors">Thailand & Bangkok</h3>
+                        <p class="text-gray-500 text-sm mb-6 line-clamp-2">Bangkok Tiger Park, Alcazar Show, Dinner Cruise, Coral Island & Marine Park.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                            <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Starts From</span>
+                            <span class="text-2xl font-black text-secondary">₹42,000</span>
+                        </div>
+                        <a href="packages.html#upcoming-thailand" class="mt-6 block w-full bg-secondary text-white text-center py-4 rounded-2xl font-bold hover:bg-primary transition-all shadow-xl shadow-secondary/20">
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 8. Malaysia Singapore -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-2xl group transition-all duration-500 hover:-translate-y-2 border border-white/10">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/upcoming/Malaysia & Singapore.png" alt="Singapore Marina Bay" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 flex flex-col gap-2">
+                            <span class="bg-primary text-white font-bold py-1 px-4 rounded-xl shadow-lg text-sm">APR 30</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-secondary text-xs font-bold flex items-center shadow-lg">
+                            <i class="fas fa-plane mr-1.5 text-primary"></i> 6 DAYS FLIGHT
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition-colors">Malaysia & Singapore</h3>
+                        <p class="text-gray-500 text-sm mb-6 line-clamp-2">Putra Jaya, KL Tower, TWIN Tower, Batu Caves, Genting & Universal Studios.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                            <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Starts From</span>
+                            <span class="text-2xl font-black text-secondary">₹65,500</span>
+                        </div>
+                        <a href="packages.html#upcoming-malaysia-singapore" class="mt-6 block w-full bg-secondary text-white text-center py-4 rounded-2xl font-bold hover:bg-primary transition-all shadow-xl shadow-secondary/20">
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 py-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Holiday Packages</h2>
+
+            <div class="owl-carousel destination-carousel owl-theme">
+                <!-- Delhi -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="images/package details/DELHI_PHOTOS/AMIR FORT.jpg" alt="Delhi"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Delhi</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Historical monuments and culture</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#delhi"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Goa -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="images/package details/GOA/CORUSE.jpg" alt="Goa" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Goa</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Sun, sand and exciting nightlife</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#goa"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gujarat -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="images/package details/GUJARAT/somnath.jpg" alt="Gujarat"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Gujarat</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Rich heritage and landscapes</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#gujarat"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hyderabad -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="images/package details/HYDERABAD/HYDERABAD.jpg" alt="Hyderabad"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Hyderabad</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">City of Nizams and delicious biryani</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#hyderabad"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kasi -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="images/package details/KASI TEMPLE_IMAGE/02.jpg" alt="Kasi"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Kasi</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Spiritual journey along the Ganges</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#kasi"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kerala -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="images/package details/KERALA/BOAT HOUSE_.jpg" alt="Kerala"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Kerala</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">God's own country with backwaters</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#kerala"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mangalore -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="images/package details/MANGALOR/MURUDISWARE.jpg" alt="Mangalore"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Mangalore</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Coastal beauty and cultural</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#mangalore"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ramoji -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="images/package details/RAMOJ FILM CITY/Ramoji_Film_City_111.jpg" alt="Ramoji Film City"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Ramoji Film City</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">World's largest film studio complex</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#ramoji"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shirdi -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="images/package details/SHIRDI/BOMBAY_TAJ.jpg" alt="Shirdi"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Shirdi</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Journey to Sai Baba's abode</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#shirdi"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <h2 class="text-3xl font-bold text-center mt-10 mb-10">Spiritual Tours</h2>
+
+            <div class="owl-carousel pilgrim-carousel owl-theme">
+                <!-- Tirupati -->
+                <!-- <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="images/homepage/tirupathi.jpeg" alt="Tirupati" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Tirupati</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Home of Lord Venkateshwara</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#tirupati" class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore Packages</a>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Shirdi -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="images/package details/SHIRDI/BOMBAY_TAJ.jpg" alt="Shirdi"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Shirdi</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Journey to Sai Baba's abode</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#shirdi"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kasi -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="images/package details/KASI TEMPLE_IMAGE/02.jpg" alt="Kasi"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Kasi</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Spiritual journey along the Ganges</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#kasi"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Murudiswarar -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="images/homepage/rameshwaram.jpeg" alt="Rameshwaram" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Murudiswarar</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Sacred temples beaches</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#rameshwaram"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Puri -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="images/homepage/puri.jpeg" alt="Puri" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Puri</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Home to the Jagannath Temple</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#srilanka"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-3xl font-bold text-center mt-10 mb-10">International Tours</h2>
+
+            <div class="owl-carousel international-carousel owl-theme">
+                <!-- Nepal -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="images/package details/NEPAL_IMAGE/Muktinath.jpg" alt="Nepal"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Nepal</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Himalayan beauty and adventure</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#nepal"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dubai -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&h=300&fit=crop"
+                        alt="Dubai" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Dubai</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Luxury and modern architecture</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#dubai"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thailand -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=400&h=300&fit=crop"
+                        alt="Thailand" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Thailand</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Beaches, temples and vibrant culture</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#thailand"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Singapore -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=400&h=300&fit=crop"
+                        alt="Singapore" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Singapore</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Modern city-state with attractions</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#singapore"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bali -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&h=300&fit=crop"
+                        alt="Bali" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Bali</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Island paradise with stunning beaches</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#bali"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vietnam -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=400&h=300&fit=crop"
+                        alt="Vietnam" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Vietnam</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Rich history and natural beauty</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#vietnam"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cambodia -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=400&h=300&fit=crop"
+                        alt="Cambodia" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Cambodia</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Ancient temples and rich heritage</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#cambodia"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Malaysia -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="images/package details/MALEYSIYA_IMAGE/BANKAG.jpg" alt="Malaysia"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Malaysia</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Modern cities and tropical paradise</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#malaysia"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Andaman -->
+                <div class="destination-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="images/package details/ANDAMAN_IMAGE/ANDAMAN.jpg" alt="Andaman"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-center mb-2">Andaman</h3>
+                        <p class="text-gray-600 text-sm text-center mb-4">Beaches and crystal clear waters</p>
+                        <div class="flex justify-center">
+                            <a href="./packages.html#andaman"
+                                class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full text-sm transition">Explore
+                                Packages</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Packages -->
+    <section class="py-16 bg-white popular-packages">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Popular Packages</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Package 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition scale-in"
+                    style="animation-delay: 0.1s;">
+                    <div class="relative h-64">
+                        <img src="images/homepage/india-tour.png" alt="India Tour Package"
+                            class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+                            <div class="text-white">
+                                <h3 class="text-xl font-semibold">Build Your Package</h3>
+                                <a href="./destination.html"
+                                    class="inline-block mt-2 bg-accent text-black px-4 py-1 rounded text-sm font-medium">
+                                    EXPLORE
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition scale-in"
+                    style="animation-delay: 0.2s;">
+                    <div class="relative h-64">
+                        <img src="images/homepage/international-tour-packages.jpg" alt="International Tour"
+                            class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+                            <div class="text-white">
+                                <h3 class="text-xl font-semibold">International Tour</h3>
+                                <a href="./destination.html"
+                                    class="inline-block mt-2 bg-accent text-black px-4 py-1 rounded text-sm font-medium">
+                                    EXPLORE
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition scale-in"
+                    style="animation-delay: 0.3s;">
+                    <div class="relative h-64">
+                        <img src="images/homepage/international-honeymoon.jpg" alt="Honeymoon Package"
+                            class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+                            <div class="text-white">
+                                <h3 class="text-xl font-semibold">International Honeymoon</h3>
+                                <a href="./destination.html"
+                                    class="inline-block mt-2 bg-accent text-black px-4 py-1 rounded text-sm font-medium">
+                                    EXPLORE
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 4 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition scale-in"
+                    style="animation-delay: 0.4s;">
+                    <div class="relative h-64">
+                        <img src="images/homepage/europe-tour.jpg" alt="Europe Tour" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+                            <div class="text-white">
+                                <h3 class="text-xl font-semibold">Europe Tour Packages</h3>
+                                <a href="./destination.html"
+                                    class="inline-block mt-2 bg-accent text-black px-4 py-1 rounded text-sm font-medium">
+                                    EXPLORE
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 5 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition scale-in"
+                    style="animation-delay: 0.5s;">
+                    <div class="relative h-64">
+                        <img src="images/homepage/Adventure-Holidays-in-India.jpg" alt="Adventure Tour"
+                            class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+                            <div class="text-white">
+                                <h3 class="text-xl font-semibold">Adventure Holidays</h3>
+                                <a href="./destination.html"
+                                    class="inline-block mt-2 bg-accent text-black px-4 py-1 rounded text-sm font-medium">
+                                    EXPLORE
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View More -->
+                <div class="flex items-center justify-center">
+                    <a href="./destination.html"
+                        class="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed border-gray-300 rounded-lg hover:border-primary hover:bg-gray-50 transition">
+                        <span class="text-4xl text-gray-400 mb-2">+</span>
+                        <span class="text-gray-600 font-medium">View More Packages</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Why Choose Us</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Experience the difference with Air Saai Tours, your trusted
+                    partner for unforgettable journeys</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white rounded-lg p-6 text-center shadow hover:shadow-lg transition slide-in"
+                    style="animation-delay: 0.1s;">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-route text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">30,000+ Annual Trips</h3>
+                    <p class="text-gray-600">Trusted by thousands of travelers each year for memorable journeys across
+                        India and international destination.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white rounded-lg p-6 text-center shadow hover:shadow-lg transition slide-in"
+                    style="animation-delay: 0.2s;">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-gem text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Handcrafted Experiences</h3>
+                    <p class="text-gray-600">Meticulously designed itineraries that showcase the best of every
+                        destination with authentic local connections.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white rounded-lg p-6 text-center shadow hover:shadow-lg transition slide-in"
+                    style="animation-delay: 0.3s;">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-smile-beam text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Extremely Happy Travelers</h3>
+                    <p class="text-gray-600">95% customer satisfaction rate with travelers returning to book with us
+                        again and recommending us to friends and family.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Award Section -->
+    <section class="py-16 bg-accent">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/4 mb-8 md:mb-0 fade-in">
+                <img src="images/trophy_005.png" alt="Award Trophy" class="mx-auto h-48">
+            </div>
+
+            <div class="md:w-3/4 text-center md:text-left md:pl-8">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Air Saai Tours been awarded the <br>Best Travel Company
+                    in South India</h2>
+                <p class="mb-4">Air Saai Tours has been awarded the Best Travel Company in South India Award by The
+                    Travel and Hospitality Awards by the Government of India.</p>
+                <p class="font-medium">
+                    At this point, we humbly bow to all our dearest clients, suppliers, travel ambassadors, media
+                    partners, friends, family and well wishers for your unconditional love towards us. We promise to
+                    work even more harder and deliver even better.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Welcome to Air Saai Tours</h2>
+                <p class="text-gray-600 mb-4">
+                    Air Saai Tours (AST), established in 2009, is a leading Tamilnadu-based tour operator. Specializing
+                    in adventure tours via road/rail/flight/cruise, Govt.-recognized with 15+ years of experience,
+                    serving lakhs of global travelers.
+                </p>
+                <p class="text-gray-600 mb-4">
+                    We are proud to be one of the most professional management Organization in South India. It has
+                    flourished as an established international management Organization in short time. It has succeeded
+                    to get distinguished name not only into adventure Tourism, but also all other segments of Tourism
+                    and Aviation Industry.
+                </p>
+                <p class="text-gray-600">
+                    Our exceptional reputation stems from our unflagging commitment to superior customer service and a
+                    steadfast dedication to total quality management in every aspect of our business operations.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Group Photos Banner -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="relative rounded-xl overflow-hidden">
+                <img src="images/homepage/adventure-banner-1.jpg" alt="Group Photos" class="w-full h-80 object-cover">
+                <div class="absolute inset-0 bg-black/40 flex items-center">
+                    <div class="px-8 md:px-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                            group<br>Tours by<br>
+                            <span class="text-accent">Air saai tours</span>
+                        </h2>
+                        <p class="text-white max-w-lg mb-6">
+                            Join our expertly curated group departures to explore destination with like-minded
+                            travelers. All-inclusive group photos by Air Saai.
+                        </p>
+                        <a href="./packages.html"
+                            class="inline-block bg-white text-secondary px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition">
+                            EXPLORE NOW
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Group Photos -->
+    <section class="py-16 bg-white premium-tours">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Air Saai Premium Group Tours</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition scale-in"
+                    style="animation-delay: 0.1s;">
+                    <div class="relative">
+                        <img src="images/homepage/malaysia.jpg" alt="Singapore Malaysia Tour"
+                            class="w-full h-48 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-primary text-white text-center py-1">
+                            SINGAPORE<br>MALAYSIA TOUR
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition scale-in"
+                    style="animation-delay: 0.2s;">
+                    <div class="relative">
+                        <img src="images/homepage/south-africa.jpg" alt="South Africa Group Tour"
+                            class="w-full h-48 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-primary text-white text-center py-1">
+                            SOUTH AFRICA<br>GROUP TOUR
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition scale-in"
+                    style="animation-delay: 0.3s;">
+                    <div class="relative">
+                        <img src="images/homepage/thailand.png" alt="Thailand Group Tour"
+                            class="w-full h-48 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-primary text-white text-center py-1">
+                            THAILAND<br>GROUP TOUR
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition scale-in"
+                    style="animation-delay: 0.4s;">
+                    <div class="relative">
+                        <img src="images/homepage/japan.jpeg" alt="Japan Group Tour" class="w-full h-48 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-primary text-white text-center py-1">
+                            JAPAN<br>GROUP TOUR
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition scale-in"
+                    style="animation-delay: 0.5s;">
+                    <div class="relative">
+                        <img src="images/homepage/beach.jpg" alt="Scandinavian Group Tour"
+                            class="w-full h-48 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-primary text-white text-center py-1">
+                            SCANDINAVIAN<br>GROUP TOUR
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <a href="./contactus.html"
+                    class="inline-block bg-accent text-black px-6 py-2 rounded-full font-medium hover:bg-yellow-500 transition">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-12 bg-secondary text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-2">Newsletter</h3>
+                    <p>Subscribe to our newsletter for the latest travel updates and exclusive offers.</p>
+                </div>
+                <div class="w-full md:w-1/3">
+                    <div class="flex">
+                        <input type="email" placeholder="Your email address"
+                            class="w-full px-4 py-3 rounded-l-lg focus:outline-none text-gray-700">
+                        <button class="bg-primary text-white px-4 py-3 rounded-r-lg hover:bg-red-700 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="popup-overlay" id="popupOverlay"></div>
+
+    <!-- Popup Content -->
+    <div class="popup-contact-overlay" id="contactPopup">
+        <div class="popup-contact-container">
+            <div class="popup-contact-close" id="closePopup">&times;</div>
+
+            <div class="popup-contact-title">Send Us a Message</div>
+            <div class="popup-contact-description">Have questions about our tour packages or need custom travel
+                arrangements? Fill out the form below and our travel experts will get back to you shortly.</div>
+
+            <div class="popup-success-message popup-message" id="popupSuccessMessage">
+                Your message has been sent successfully! We'll get back to you soon.
+            </div>
+
+            <div class="popup-error-message popup-message" id="popupErrorMessage">
+                There was an error sending your message. Please try again later.
+            </div>
+
+            <form id="popupContactForm">
+                <div class="popup-form-row">
+                    <div class="popup-form-col">
+                        <label class="popup-form-label" for="popupName">Full Name</label>
+                        <input type="text" id="popupName" name="name" class="popup-form-input" required>
+                    </div>
+                    <div class="popup-form-col">
+                        <label class="popup-form-label" for="popupEmail">Email Address</label>
+                        <input type="email" id="popupEmail" name="email" class="popup-form-input" required>
+                    </div>
+                </div>
+
+                <div class="popup-form-row">
+                    <div class="popup-form-col">
+                        <label class="popup-form-label" for="popupPhone">Phone Number</label>
+                        <input type="tel" id="popupPhone" name="phone" class="popup-form-input">
+                    </div>
+                    <div class="popup-form-col">
+                        <label class="popup-form-label" for="popupSubject">Subject</label>
+                        <select id="popupSubject" name="subject" class="popup-form-select" required>
+                            <option value="">Select an option</option>
+                            <option value="booking">Tour Booking</option>
+                            <option value="inquiry">Package Inquiry</option>
+                            <option value="customization">Custom Tour Request</option>
+                            <option value="support">Customer Support</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="popup-form-group">
+                    <label class="popup-form-label" for="popupMessage">Your Message</label>
+                    <textarea id="popupMessage" name="message" rows="4" class="popup-form-textarea" required></textarea>
+                </div>
+
+                <div class="popup-form-group">
+                    <button type="submit" class="popup-form-button" id="popupSubmitBtn">
+                        <span>Send Message</span>
+                        <div class="popup-loading-spinner" id="popupLoadingSpinner"></div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Grand Opening Popup Content -->
+    <div class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[10000] hidden transition-opacity duration-300" id="grandOpeningPopup">
+        <div class="bg-white rounded-xl max-w-2xl w-11/12 md:w-full relative shadow-2xl overflow-hidden transform scale-95 opacity-0 transition-transform duration-300" id="grandOpeningPopupContent">
+            <!-- Close Button -->
+            <button id="closeGrandOpening" class="absolute top-4 right-4 text-white hover:text-yellow-300 w-8 h-8 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 transition z-20">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="bg-gradient-to-br from-red-600 via-red-700 to-red-900 text-white p-8 md:p-10 text-center relative">
+                <!-- Decorative Pattern -->
+                <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at center, #ffffff 1px, transparent 1px); background-size: 20px 20px;"></div>
+                
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-3 relative z-10 tracking-wide" style="font-family: 'Poppins', sans-serif;">New Branch</h2>
+                <h3 class="text-2xl md:text-3xl font-bold mb-6 text-yellow-300 relative z-10">தர்மபுரியில் புதிய உதயம்</h3>
+
+                <div class="mb-8 relative z-10 bg-black/20 p-6 rounded-xl border border-white/10">
+                    <p class="text-yellow-300 mb-3 font-semibold text-lg uppercase tracking-wider">New Branch Address</p>
+                    <p class="text-white md:text-lg leading-relaxed max-w-md mx-auto">
+                        1st Floor, Sree Ranga Department Store,<br>
+                        Opp. Emden Mess, 10A, Nethaji Bye-Pass Road,<br>
+                        Salem Main Road, Dharmapuri - 636701
+                    </p>
+                </div>
+
+                <div class="relative z-10 flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+                    <a href="https://wa.me/917373005591" target="_blank" class="w-full sm:w-auto bg-green-500 text-white px-8 py-3.5 rounded-full font-bold text-lg hover:bg-green-400 transition transform hover:-translate-y-1 shadow-lg flex items-center justify-center">
+                        <i class="fab fa-whatsapp mr-2 text-xl"></i> WhatsApp Us
+                    </a>
+                    <a href="tel:+917373005591" class="w-full sm:w-auto bg-white text-red-700 px-8 py-3.5 rounded-full font-bold text-lg hover:bg-gray-100 transition transform hover:-translate-y-1 shadow-lg flex items-center justify-center">
+                        <i class="fas fa-phone-alt mr-2"></i> Contact Us
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <div class="text-3xl font-bold ">Air Saai Tours</div>
+                    <div class="bg-primary text-white px-6 py-2 rounded-md text-sm uppercase tracking-wider mt-2" style="
+                width: 78%;
+                font-size: 8px;
+                font-weight: 600;
+                margin: 0;
+                padding: 0px 0 0 8px;
+            ">
+                        Domestic & International Tour Operator
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Your trusted partner in creating unforgettable travel experiences across India and worldwide.
+                    </p>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/917373005591" target="_blank" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/airsaaitours/"
+                            class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@airsaaitours112"
+                            class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div class="text-gray-400">
+                        <div class="mb-3">
+                            <p class="text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Salem Head Office</p>
+                            <p class="flex items-start mb-2 text-sm">
+                                <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary"></i>
+                                <span>Air Saai Tours, 3 Perumal Koil St, near Sasi Eye Care, Swarnapuri, Salem, Tamil Nadu 636004</span>
+                            </p>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Dharmapuri Branch</p>
+                            <p class="flex items-start mb-2 text-sm">
+                                <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary"></i>
+                                <span>1st Floor, Sree Ranga Department Store, Opp. Emden Mess, 10A, Nethaji Bye-Pass Road, Salem Main Road, Dharmapuri - 636701</span>
+                            </p>
+                        </div>
+                        <p class="flex items-center mb-2">
+                            <i class="fas fa-phone-alt mr-3 w-4 text-center"></i>
+                            <a href="tel:+917373005591" class=" hover:text-primary transition duration-200">
+                                +91 73730 05591
+                            </a>
+                        </p>
+                        <p class="flex items-center mb-2">
+                            <i class="fas fa-phone-alt mr-3 w-4 text-center"></i>
+                            <a href="tel:+919842307591" class=" hover:text-primary transition duration-200">
+                                +91 98423 07591
+                            </a>
+                        </p>
+                        <p class="flex items-center mb-2">
+                            <i class="fab fa-whatsapp mr-3 w-4 text-center text-green-500 text-lg"></i>
+                            <a href="https://wa.me/917373005591" target="_blank" class=" hover:text-green-400 transition duration-200">
+                                WhatsApp Us
+                            </a>
+                        </p>
+                        <p class="flex items-center mb-2">
+                            <i class="fas fa-envelope mr-3 w-4 text-center"></i>
+                            <span>info@airsaaitours.com</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="./packages.html" class="text-gray-400 hover:text-white transition">Our Services</a>
+                        </li>
+                        <li><a href="./packages.html" class="text-gray-400 hover:text-white transition">Tour
+                                Packages</a></li>
+                        <li><a href="./destination.html"
+                                class="text-gray-400 hover:text-white transition">Destinations</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Travel Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Popular Destinations</h3>
+                    <ul class="space-y-3">
+                        <li><a href="./packages.html#kerala" class="text-gray-400 hover:text-white transition">Kerala
+                                Boat House - 2N/3D</a></li>
+                        <li><a href="./packages.html#mysore" class="text-gray-400 hover:text-white transition">Mysore
+                                Coorg - 2N/3D</a></li>
+                        <li><a href="./packages.html#mangalore"
+                                class="text-gray-400 hover:text-white transition">Mangalore - 3N/4D</a></li>
+                        <li><a href="./packages.html#mantralayam"
+                                class="text-gray-400 hover:text-white transition">Mantralayam Pandaripuram Shirdi -
+                                4N/5D</a></li>
+                        <li><a href="./packages.html#shirdi" class="text-gray-400 hover:text-white transition">Shirdi
+                                Nashik Bombay - 2N/3D</a></li>
+                        <li><a href="./packages.html#goa" class="text-gray-400 hover:text-white transition">Goa North &
+                                South - 2N/3D</a></li>
+                        <li><a href="./packages.html#andaman" class="text-gray-400 hover:text-white transition">Andaman
+                                - 4N/5D</a></li>
+                        <li><a href="./packages.html#hyderabad"
+                                class="text-gray-400 hover:text-white transition">Hyderabad - 3N/4D</a></li>
+                        <li><a href="./packages.html#kolkata" class="text-gray-400 hover:text-white transition">Kolkata
+                                Puri Bhubaneswar - 4N/5D</a></li>
+                        <li><a href="./packages.html#kashmir" class="text-gray-400 hover:text-white transition">Kashmir
+                                - 5N/6D</a></li>
+                        <li><a href="./packages.html#kasi" class="text-gray-400 hover:text-white transition">Kasi
+                                Ayodhya Allahabad Gaya - 4N/5D</a></li>
+                        <li><a href="./packages.html#delhi" class="text-gray-400 hover:text-white transition">Delhi Agra
+                                Mathura Jaipur - 4N/5D</a></li>
+
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Popular Destinations</h3>
+                    <ul class="space-y-3">
+                        <li><a href="./packages.html#gujarat" class="text-gray-400 hover:text-white transition">Gujarat
+                                - 4N/5D</a></li>
+                        <li><a href="./packages.html#rajasthan"
+                                class="text-gray-400 hover:text-white transition">Rajasthan - 8N/9D</a></li>
+                        <li><a href="./packages.html#shimla" class="text-gray-400 hover:text-white transition">Shimla
+                                Kullu Manali - 5N/6D</a></li>
+                        <li><a href="./packages.html#sikkim" class="text-gray-400 hover:text-white transition">Sikkim
+                                Gangtok Darjeeling - 6N/7D</a></li>
+                        <li><a href="./packages.html#malaysia"
+                                class="text-gray-400 hover:text-white transition">Malaysia Singapore - 5N/6D</a></li>
+                        <li><a href="./packages.html#thailand"
+                                class="text-gray-400 hover:text-white transition">Thailand - 4N/5D</a></li>
+                        <li><a href="./packages.html#nepal" class="text-gray-400 hover:text-white transition">Nepal -
+                                5N/6D</a></li>
+                        <li><a href="./packages.html#dubai" class="text-gray-400 hover:text-white transition">Dubai -
+                                4N/5D</a></li>
+                        <li><a href="./packages.html#srilanka"
+                                class="text-gray-400 hover:text-white transition">Srilanka - 4N/5D</a></li>
+                        <li><a href="./packages.html#bali" class="text-gray-400 hover:text-white transition">Bali -
+                                4N/5D</a></li>
+                        <li><a href="./packages.html#vietnam" class="text-gray-400 hover:text-white transition">Vietnam
+                                - 4N/5D</a></li>
+                        <li><a href="./packages.html#cambodia"
+                                class="text-gray-400 hover:text-white transition">Cambodia - 4N/5D</a></li>
+                    </ul>
+                </div>
+
+                <!-- Instagram Feed -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Instagram Feed</h4>
+                    <div class="grid grid-cols-3 gap-2">
+                        <a href="https://www.instagram.com/airsaaitours/"><img src="images/homepage/feed-1.jpg"
+                                alt="Instagram Photo" class="w-full h-20 object-cover rounded"></a>
+                        <a href="https://www.instagram.com/airsaaitours/"><img src="images/homepage/feed-2.jpg"
+                                alt="Instagram Photo" class="w-full h-20 object-cover rounded"></a>
+                        <a href="https://www.instagram.com/airsaaitours/"><img src="images/homepage/feed-3.jpg"
+                                alt="Instagram Photo" class="w-full h-20 object-cover rounded"></a>
+                        <a href="https://www.instagram.com/airsaaitours/"><img src="images/homepage/feed-4.jpg"
+                                alt="Instagram Photo" class="w-full h-20 object-cover rounded"></a>
+                        <a href="https://www.instagram.com/airsaaitours/"><img src="images/homepage/feed-5.jpg"
+                                alt="Instagram Photo" class="w-full h-20 object-cover rounded"></a>
+                        <a href="https://www.instagram.com/airsaaitours/"><img src="images/homepage/feed-6.jpg"
+                                alt="Instagram Photo" class="w-full h-20 object-cover rounded"></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Footer -->
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 mb-4 md:mb-0">© 2025 Air Saai Tours. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition">Terms & Conditions</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition">Cancellation Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#"
+        class="fixed bottom-6 right-6 bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-red-700 transition z-50">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript for Animations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Show Grand Opening popup immediately
+            setTimeout(function () {
+                const goPopup = document.getElementById('grandOpeningPopup');
+                const goContent = document.getElementById('grandOpeningPopupContent');
+                if (goPopup) {
+                    goPopup.classList.remove('hidden');
+                    // Add slight delay before transition classes class for animation
+                    setTimeout(() => {
+                        goContent.classList.remove('scale-95', 'opacity-0');
+                        goContent.classList.add('scale-100', 'opacity-100');
+                    }, 50);
+                }
+            }, 500);
+
+            // Grand Opening popup close handling
+            document.getElementById('closeGrandOpening')?.addEventListener('click', function () {
+                const goPopup = document.getElementById('grandOpeningPopup');
+                const goContent = document.getElementById('grandOpeningPopupContent');
+                goContent.classList.remove('scale-100', 'opacity-100');
+                goContent.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => { goPopup.classList.add('hidden'); }, 300);
+            });
+            
+            document.getElementById('grandOpeningPopup')?.addEventListener('click', function (e) {
+                if (e.target === this) {
+                    const goPopup = document.getElementById('grandOpeningPopup');
+                    const goContent = document.getElementById('grandOpeningPopupContent');
+                    goContent.classList.remove('scale-100', 'opacity-100');
+                    goContent.classList.add('scale-95', 'opacity-0');
+                    setTimeout(() => { goPopup.classList.add('hidden'); }, 300);
+                }
+            });
+
+            // Show contact popup after 30 seconds instead to not overlap
+            setTimeout(function () {
+                document.getElementById('contactPopup').style.display = 'flex';
+            }, 30000);
+
+            // Close popup when clicking the close button
+            document.getElementById('closePopup').addEventListener('click', function () {
+                document.getElementById('contactPopup').style.display = 'none';
+            });
+
+            // Close popup when clicking outside the popup
+            document.getElementById('contactPopup').addEventListener('click', function (e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                }
+            });
+
+            // Handle form submission
+            const popupForm = document.getElementById('popupContactForm');
+            const submitBtn = document.getElementById('popupSubmitBtn');
+            const loadingSpinner = document.getElementById('popupLoadingSpinner');
+            const successMessage = document.getElementById('popupSuccessMessage');
+            const errorMessage = document.getElementById('popupErrorMessage');
+
+            popupForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Show loading spinner
+                submitBtn.disabled = true;
+                loadingSpinner.style.display = 'block';
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'none';
+
+                // Get form data
+                const formData = new FormData(popupForm);
+                const jsonData = {};
+
+                // Convert FormData to JSON
+                formData.append('timestamp', new Date().toISOString()); // Add timestamp
+                formData.forEach((value, key) => {
+                    jsonData[key] = value;
+                });
+
+                // Send data to Google Apps Script
+                fetch('https://script.google.com/macros/s/AKfycbx_6PdIs7oQ_7QU6h4YmgT4n3sjjUNxCI7Gxmgv3tzwQzo6IOnTbavCCOoPGAj0rQHCGw/exec', {
+                    method: 'POST',
+                    mode: 'no-cors', // This is important for CORS issues
+                    cache: 'no-cache',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    redirect: 'follow',
+                    body: JSON.stringify(jsonData)
+                })
+                    .then(response => {
+                        // Since we're using no-cors, we can't actually read the response
+                        // So we just assume success if no error is thrown
+                        successMessage.style.display = 'block';
+                        errorMessage.style.display = 'none';
+                        popupForm.reset();
+
+                        // Hide loading spinner
+                        submitBtn.disabled = false;
+                        loadingSpinner.style.display = 'none';
+
+                        // Hide success message after 3 seconds
+                        setTimeout(function () {
+                            successMessage.style.display = 'none';
+                        }, 3000);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        errorMessage.style.display = 'block';
+                        successMessage.style.display = 'none';
+
+                        // Hide loading spinner
+                        submitBtn.disabled = false;
+                        loadingSpinner.style.display = 'none';
+
+                        // Hide error message after 3 seconds
+                        setTimeout(function () {
+                            errorMessage.style.display = 'none';
+                        }, 3000);
+                    });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Hero Carousel
+            $('.hero-carousel').owlCarousel({
+                items: 1,
+                loop: true,
+                margin: 0,
+                nav: false,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 6000,
+                autoplayHoverPause: true,
+                animateOut: 'fadeOut',
+                animateIn: 'fadeIn',
+                smartSpeed: 1000,
+                dotsClass: 'owl-dots absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20',
+                dotClass: 'owl-dot inline-block w-3 h-3 rounded-full bg-white bg-opacity-50 mx-1 cursor-pointer transition-all hover:bg-opacity-100',
+            });
+
+            // Popular Destinations Carousel (Default)
+            $('.destination-carousel').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                autoplayHoverPause: true,
+                navText: [
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>',
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>'
+                ],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    640: {
+                        items: 2
+                    },
+                    768: {
+                        items: 3
+                    },
+                    1024: {
+                        items: 4
+                    },
+                    1280: {
+                        items: 5
+                    }
+                }
+            });
+
+            // Pilgrim Tours Carousel (Reverse Direction)
+            $('.pilgrim-carousel').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                autoplayHoverPause: true,
+                rtl: true, // Right to left for reverse scrolling
+                navText: [
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>',
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>'
+                ],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    640: {
+                        items: 2
+                    },
+                    768: {
+                        items: 3
+                    },
+                    1024: {
+                        items: 4
+                    },
+                    1280: {
+                        items: 5
+                    }
+                }
+            });
+
+            // International Tours Carousel (Forward Direction)
+            $('.international-carousel').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                autoplayHoverPause: true,
+                navText: [
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>',
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>'
+                ],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    640: {
+                        items: 2
+                    },
+                    768: {
+                        items: 3
+                    },
+                    1024: {
+                        items: 4
+                    },
+                    1280: {
+                        items: 5
+                    }
+                }
+            });
+
+            // Spiritual Tours Carousel (Forward Direction)
+            $('.spiritual-carousel').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                autoplayHoverPause: true,
+                navText: [
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>',
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>'
+                ],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    640: {
+                        items: 2
+                    },
+                    768: {
+                        items: 3
+                    },
+                    1024: {
+                        items: 4
+                    },
+                    1280: {
+                        items: 5
+                    }
+                }
+            });
+            // Upcoming Tours Carousel
+            $('.upcoming-carousel').owlCarousel({
+                loop: true,
+                margin: 30,
+                nav: true,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 4000,
+                autoplayHoverPause: true,
+                navText: [
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="bg-primary/80 p-2 rounded-full w-10 h-10"><path d="M15 18l-6-6 6-6"/></svg>',
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="bg-primary/80 p-2 rounded-full w-10 h-10"><path d="M9 18l6-6-6-6"/></svg>'
+                ],
+                responsive: {
+                    0: { items: 1 },
+                    640: { items: 2 },
+                    1024: { items: 3 },
+                    1280: { items: 4 }
+                }
+            });
+        });
+        // Observe elements with animation classes and trigger them when they enter viewport
+        document.addEventListener('DOMContentLoaded', function () {
+            const animatedElements = document.querySelectorAll('.fade-in, .slide-in, .scale-in');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.visibility = 'visible';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'none';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.visibility = 'hidden';
+                observer.observe(el);
+            });
+
+            // Mobile menu toggle
+            const menuButton = document.querySelector('.md\\:hidden');
+            if (menuButton) {
+                menuButton.addEventListener('click', function () {
+                    const mobileMenu = document.createElement('div');
+                    mobileMenu.className = 'fixed inset-0 bg-white z-50 p-4';
+                    mobileMenu.innerHTML = `
+                    <div class="flex justify-between items-center mb-8">
+                                    <div id="logo-session" class="flex items-center gap-3">
+                <!-- Logo with proper sizing -->
+                <img src="./images/airsaaitours-logo-color.png" alt="Logo" class="h-20 rounded-full object-cover">
+                
+                <!-- Brand name and tagline as SVG -->
+                <div class="h-14">
+                    <img src="./images/airsaaitours-logo-text.png" alt="Air Saai Tours - Domestic & International Tour Operator" class="h-full">
+                </div>
+            </div>
+                    </div>
+                    <nav class="flex flex-col space-y-4">
+                        <a href="./index.html" class="text-gray-800 hover:text-primary font-medium py-2 border-b border-gray-100">Home</a>
+                        <a href="./destination.html" class="text-gray-800 hover:text-primary font-medium py-2 border-b border-gray-100">Destinations</a>
+                        <a href="./packages.html" class="text-gray-800 hover:text-primary font-medium py-2 border-b border-gray-100">Packages</a>
+                        <a href="./testimonials" class="text-gray-800 hover:text-primary font-medium py-2 border-b border-gray-100">Testimonials</a>
+                        <a href="" class="text-gray-800 hover:text-primary font-medium py-2 border-b border-gray-100">Blog</a>
+                        <div class="pt-4 flex flex-col space-y-3">
+                            <a href="tel:+917373005591" class="bg-primary text-white rounded-full px-5 py-2 text-center">Contact Us</a>
+                        </div>
+                    </nav>
+                `;
+                    document.body.appendChild(mobileMenu);
+                    const closeButton = mobileMenu.querySelector('button');
+                    closeButton.addEventListener('click', function () {
+                        document.body.removeChild(mobileMenu);
+                    });
+                });
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
